@@ -1,0 +1,1 @@
+Error : Either there is no red point or no blue point

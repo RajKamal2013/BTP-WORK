@@ -1,0 +1,15 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Introduction}{1}
+\contentsline {section}{\numberline {1.2}Related Works }{2}
+\contentsline {chapter}{\numberline {2}Algorithm}{4}
+\contentsline {section}{\numberline {2.1}Testing Feasibility}{4}
+\contentsline {section}{\numberline {2.2}Algorithm}{5}
+\contentsline {subsection}{\numberline {2.2.1}K Mean Continuos Version}{5}
+\contentsline {subsubsection}{Algorithm}{6}
+\contentsline {subsubsection}{Lemmas and Proofs}{8}
+\contentsline {subsection}{\numberline {2.2.2}K Mean Discrete Version}{10}
+\contentsline {subsubsection}{Algorithm}{11}
+\contentsline {subsubsection}{Lemma and Proofs}{13}
+\contentsline {chapter}{\numberline {3}Experimental Results}{15}
+\contentsline {section}{\numberline {3.1}Results}{15}
+\contentsline {section}{\numberline {3.2}Conclusion}{20}

@@ -1,0 +1,228 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,amssymb,mathrsfs,setspace,textcomp,amsmath}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{geometry}    
+\usepackage{graphicx}
+\usepackage{graphics}
+%\usepackage{comment}
+\usepackage{float}
+\restylefloat{figure}
+%\usepackage[active]{srcltx}
+%\usepackage[notcite,notref,color]{showkeys}
+%\usepackage{epstopdf}
+%\usepackage{graphicx, subfigure}
+%\usepackage{epsfig}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+
+% Title Page
+\title{Report on Descrete version K-Mean Algorithm Implementation }
+\author{Raj Kamal \\
+        Roll no :-09012321}
+
+
+\begin{document}
+\maketitle
+
+% --------------- Abstract page -----------------------
+\begin{center}
+{\Large{\bf{ABSTRACT}}}
+\end{center}
+The purpose of this report is to give details of working and functionality of the descrete version of k-MEAN algorithm.
+We have used the Descrete K Mean Algorithm to approximate the solution of Descrete Square Unit Cover Problem.Given 
+n red point and m blue point.We have the red points using blue points.A red point is said to be covered if we draw
+a circle of radius rad center around a blue point out of blue point set ,then that red point must lie inside the circle.
+We will use Descrete version of K Mean algorihtm to arrive to the answer.
+
+\clearpage
+
+\tableofcontents
+\chapter{Introduction}
+\chapter{Code }
+\begin{itemize}
+ \item Install some of the libraries \\
+       \textbf{sudo apt$\textendash$get install freeglut freeglut3$\textendash$dev g$++$} 
+ \item The code is made using C and C$++$ libraries.
+ \item It implements the Continuos K Mean Algorithm and Descrete K mean algorithm in background and display the results.
+ \item Several Global Variables are defined in $main.cpp$ file where any user can put their value
+ \item There are several functionality with keyboard and mouse .Any time program hang then its the case see
+       the command promot ,it must be asking for input and if exited we can see $error.txt$ to see the error.
+\end{itemize}
+\clearpage
+\section{Continuos K Mean Algorithm}
+\subsection{Usage}
+Initially A blank screen will appear and menu on terminal.Any option written in menu in terminal will work when it
+is pressed while output screen window is open.
+\begin{itemize}
+ \item Press \textbf{esc} to quit the program.
+ \item Press \textbf{0} to display the menu again.
+ \item Press \textbf{Left mouse} to draw red point
+ \item Press \textbf{Middle mouse} to draw blue point
+ \item Press \textbf{Right mouse} button to explore further option.
+ \begin{enumerate}
+  \item \textbf{Generate} .It opens another menu and pressing red blue or cluster will generate random red blue cluster.It will
+                 require input which will be taken at terminal.
+  \item \textbf{Display} .It opens another munu and pressing the feild will display that in termimal or output window.
+  \item \textbf{Set}.It helps to set the varibles used in program.
+  \item \textbf{Exit} ,It will cause program to quit.
+ \end{enumerate}
+ \item We can generate specific number of red point at arbit position by pressing \textbf{r} while output window is open.
+ \item Similary we can generate blue points by pressing \textbf{b}.
+ \item We can generate both red and blue points at once by pressing \textbf{a}.\\
+  \textbf{NOTE} we can set domain by changing upper and lower limits in $main.cpp$.
+ \item We can check the feasiblity by pressing \textbf{F}.It will display on terminal whether the points are feasible
+ or not feasiblity.
+ \item We can output complete results with the red points and blue points by pressing \textbf{t}
+ \item we can output results with the present cluster size keeping same red and blue points by pressing \textbf{I}
+ \item we can output results with the incremented cluster size keeping same red and blue points by pressing \textbf{i}\\ \\
+ \textbf{NOTE} We can get result in one step by pressing \textbf{t}. But if we want to see how it is actually showing
+ resutls with incrementing cluster size for that first press \textbf{I} and then keep pressing \textbf{i} and see the
+ results step by step.ALso at any point of time if you want to see the ouptut with present clsuter size press \textbf{I}.
+ \item We can see the point and cluster by pressing \textbf{A}.
+ \item we can see the Blue points only by pressing \textbf{B}.
+ \item we can see the red points only by pressing \textbf{R}.
+ \item we can see the cluster only by pressing \textbf{C}.
+ \item we can see the actual cluster by eliminating reduntant cluster by pressing \textbf{D}.
+ \item we can see the blue cluster,(contributing to result) corresponding to clsuter algorithm found by pressing \textbf{E}.
+ \item we can see the final cover or result by pressing \textbf{G} \\ \\
+ \textbf{NOTE} Here algorithm found cluster at position where blue point are not situated.Intially it found cluster with 
+ the set value which we can see by pressing \textbf{C}. In that there may be reduntant cluster we can see the result after
+ removing them by pressing \textbf{D}.Now the clsuter head may be not at blue point so we search for corresponding blue points 
+ which we can see by pressing \textbf{E} and finaly we can see results by pressing \textbf{G}.Here only results that have
+ been produced by pressing \textbf{i,I ,t} are shown.It does not run any algorithm.It just display.
+ \item we can see how many red points are generated by pressing \textbf{1}.
+ \item we can see how many blue points are generated by pressing \textbf{2}.
+ \item we can see how many cluster are there by pressing \textbf{3}.
+ \item we can see how many cluster out of cluster resulted by algorithm participated in coverring by pressing \textbf{4}.
+ \item we can see number of blue point reqiuired to cover by pressing \textbf{5}.
+ \item We can get complete result by pressing \textbf{6}.\\ \\
+ \textbf{NOTE} we can see results in terminal only.
+ \item we can regenerate same number of points and then display the result by pressing \textbf{h}.It is usefull when we 
+ are analying results for fixed number of points.we can get an idea about how many points in the average requird to cover.
+ \item We can change cluster value and display the result by pressing \textbf{K,L,M}.
+ \item We can do statisical analysis by pressing \textbf{S}.Here algorithm is run for 100,200,500,700,1000 red point.
+ blue points are generated and cover is found and result is saved in file $result.txt$,other analysis are stored in
+ $data.txt$ and $convergence.txt$.We can change the number of red point by opening $keyboard_fun.cpp$ and changing line
+ 374 and 376.Here input is asked for upper and lower bound for red and blue points..
+ \end{itemize}
+ 
+
+ \textbf{NOTE} For the first time pressing left mouse may not display red point but as middle mouse button 
+ is pressed , all points drawn can be seen.It happens for first time only.
+\subsection{Descriptions}
+\begin{itemize}
+ \item \textbf {Header Files}
+      \begin{enumerate}
+
+      \item \textbf{iostream.h} \\
+           This is standard $C++$ header file for input and output operations.      
+      \item \textbf{cstdio}\\
+           This is standard $C++$ header file for using functions defined in C
+      \item \textbf{fstream.h} \\
+           This is standard $C++$ header file for  file operations
+      \item \textbf{cstlib}\\
+            This is standard $C++$ header file for using exit() functions
+      \item \textbf{cmath}  \\
+            This is standard $C++$ header file for mathematical functions like sqrt() square root.
+      \item \textbf{vector}  \\
+            This is standard $C++$ header file for implementing vectors and vector related functions.Vectors are dynamic
+            array.
+      \item \textbf{glu.h glut.h glui.h}\\
+            This is standard OpenGl Header files for implementing GUI .
+\end{enumerate}
+
+\item \textbf{User Defined Header File} \\
+            $user\_def.h$ is user defined library file .All Global varibles, Function Prototypes and User defined Functions are
+            listed here.All parameters like height,width of frame are listed here.Any ways definations are explicitly 
+            defined in other files.
+ 
+\item \textbf{Generating Functions}        \\
+            $algo\_fun.cpp$ contains fucntions relating to generating points.All different generating fucntions are
+            defined here.
+
+\item   \textbf{Algorithm Functions}          \\
+            All algorithm related functions defined in $algo\_fun.cpp$.Like creating cluster, changing median , creating actual 
+            cluster.
+
+\item  \textbf{Display Functions}              \\
+           All algorithms related to display are defined in $diplay\_fun.cpp$.Like displaying points, displaying actual cluster
+           and all.
+
+\item   \textbf{KeyBoard Functions}         \\
+          Several keys are used for implememting functions.ALl these are defined in $keyboard\_fun.cpp$.All the important
+          keys are displayed to console.
+          
+\item \textbf{Mouse Functions}            \\
+          Mouse left and middle buttons are used for implementing functions that are defined in $mouse\_fun.cpp$.It includes
+          functions like drawing red point and blue points.Also functionality associated with right click are defined in main.cpp
+          due to some technical issues.
+       
+\item \textbf{Main Function}              \\
+          Like every $C++$ project contains  one main function, that main function is defined in $main.cpp$.It also
+          contains definations of GLobal variables which can be set here.Also it contains the functionality definations
+          of right click of mouse button.
+          
+          
+\item \textbf{menu Function }              \\
+          It displays the menu at console and defined in $menu.cpp$
+          
+\end{itemize}
+
+
+\clearpage
+\subsection{Different files and functions}
+\clearpage
+\subsubsection {$user_fun.h$}
+\clearpage
+\subsubsection{$generator_fun.cpp$}
+\clearpage
+\subsubsection{$algo_fun.cpp$}
+\clearpage
+\subsubsection{$display_fun.cpp$}
+\clearpage
+\subsubsection{$graphics_fun.cpp$}
+\clearpage
+\subsubsection{$mouse_fun.cpp$}
+\clearpage
+\subsubsection{$keyboard_fun.cpp$}
+\clearpage
+\subsubsection{$menu_fun.cpp$}
+\clearpage
+\subsubsection{main.cpp}
+\clearpage
+\subsection{outputs}
+\subsubsection{results.txt}
+\subsubsection{error.txt}
+\subsubsection{convergence.txt}
+\subsubsection{data.txt}
+\clearpage
+\section{Descrete K Mean Algorithm}
+\subsection{Usage}
+Initially A blank screen will appear and menu on terminal.Any option written in menu in terminal will work when it
+is pressed while output screen window is open.
+\begin{itemize}
+ \item Press \textbf{esc} to quit the program.
+ \item Press \textbf{m} to display the menu again.
+ \item Press \textbf{Left mouse} to draw red point
+ \item Press \textbf{Middle mouse} to draw blue point
+ \item We can clear the screen by pressing \textbf{A}.
+ \item We can generate specified number of red and blue points at random places by pressing \textbf{w}.
+ \item We can generate specifeid number of red point at random places by pressing \textbf{B}
+ \item We can generate specified number of blue point at random places by pressing \textbf{R}.\\ \\
+ \textbf{NOTE} we can set domain by changing upper and lower limits in $main.cpp$.
+ \item we can check feasiblity by pressing \textbf{r}.Result will be displayed on terminal.
+ \item We can output complete results with the red points and blue points by pressing \textbf{t}
+ \item we can output results with the present cluster size keeping same red and blue points by pressing \textbf{I}
+ \item we can output results with the incremented cluster size keeping same red and blue points by pressing \textbf{i}\\ \\
+ \textbf{NOTE} We can get result in one step by pressing \textbf{t}. But if we want to see how it is actually showing
+ resutls with incrementing cluster size for that first press \textbf{I} and then keep pressing \textbf{i} and see the
+ results step by step.ALso at any point of time if you want to see the ouptut with present clsuter size press \textbf{I}.
+ \item we can show red points and blue points  by pressing \textbf{a}.
+ \item we can show red points only by pressing \textbf{b}.
+ \item we can show blue points only by pressing \textbf
+ 
+\end{document}          

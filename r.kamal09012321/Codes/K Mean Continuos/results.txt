@@ -1,0 +1,1 @@
+#red_point=100 #blue_point=400 K=65 K1=48 radius 10

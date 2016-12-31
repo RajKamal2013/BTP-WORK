@@ -1,0 +1,12 @@
+status 0	#red point100#blue point :400  k :10 size :9#redpoints cover :34
+status 0	#red point100#blue point :400  k :15 size :14#redpoints cover :57
+status 0	#red point100#blue point :400  k :20 size :20#redpoints cover :81
+status 0	#red point100#blue point :400  k :25 size :25#redpoints cover :85
+status 0	#red point100#blue point :400  k :30 size :27#redpoints cover :87
+status 0	#red point100#blue point :400  k :35 size :31#redpoints cover :92
+status 0	#red point100#blue point :400  k :40 size :33#redpoints cover :93
+status 0	#red point100#blue point :400  k :45 size :39#redpoints cover :97
+status 0	#red point100#blue point :400  k :50 size :41#redpoints cover :99
+status 0	#red point100#blue point :400  k :55 size :40#redpoints cover :98
+status 0	#red point100#blue point :400  k :60 size :47#redpoints cover :99
+status 1	#red point100#blue point :400  k :65 size :43#redpoints cover :100

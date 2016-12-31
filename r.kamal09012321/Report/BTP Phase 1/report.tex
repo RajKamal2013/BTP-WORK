@@ -1,0 +1,280 @@
+\documentclass[10pt,a4wide]{report}
+
+\usepackage{amsthm,amssymb,mathrsfs,setspace,pstcol,textcomp,amsmath}%amsmath, latexsym,footmisc
+%\usepackage{natbib}
+%\usepackage{play}
+\usepackage{epsfig}
+%\usepackage[grey,times]{quotchap}
+\usepackage[nottoc]{tocbibind}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\usepackage[margin=0.5in]{geometry}
+%\usepackage{natbib}
+%\bibliographystyle{unsrtnat}
+%\bibliographystyle{pjgsm}
+
+\input xy
+\xyoption{all}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+
+\begin{document}
+
+%\pagenumbering{arabic} \setcounter{page}{1}
+
+% --------------- Title page -----------------------
+
+\begin{titlepage}
+\enlargethispage{3cm}
+
+\begin{center}
+
+\vspace*{-2cm}
+
+\textbf{\Large DESCRETE UNIT SQUARE COVER PROBLEM}
+
+\vfill
+
+ A Project Report Submitted \\
+ for the course \\
+\vfill
+%   for the Degree of  \\[10pt]
+
+ {\large \bf MA498 Project-I}\\[5pt]
+%  in \\
+%  {\large \bf Mathematics and Computing}
+\vfill
+{\large \emph{by}}\\[10pt]
+{\large\bf {Raj Kamal}}\\
+{\large (Roll No. 09012321)}\\
+
+
+\vfill
+\includegraphics[height=2.5cm]{1.png}
+
+\vspace*{0.5cm}
+
+{\em\large to the}\\[10pt]
+{\bf\large DEPARTMENT OF MATHEMATICS} \\[5pt]
+{\bf\large \mbox{INDIAN INSTITUTE OF TECHNOLOGY GUWAHATI}}\\[5pt]
+{\bf\large GUWAHATI - 781039, INDIA}\\[10pt]
+{\it\large November 2012}
+\end{center}
+
+\end{titlepage}
+
+\clearpage
+
+% --------------- Certificate page -----------------------
+\pagenumbering{roman} \setcounter{page}{2}
+\begin{center}
+{\Large{\bf{CERTIFICATE}}}
+\end{center}
+%\thispagestyle{empty}
+
+
+\noindent
+This is to certify that the work contained in this project report
+entitled ``{\bf Descrete unit square cover problem}'' submitted
+by {\bf Raj Kamal} ({\bf Roll No.: 09012321})  to Indian 
+Institute of Technology Guwahati for partial requirement of {\bf MA498 Project-I} in Mathematics 
+and Computing  has been carried out by him under my supervision.
+\vspace{4cm}
+
+\noindent Guwahati - 781 039 \hfill (Dr. Gautam K. Das)
+
+\noindent   November  2012 \hfill  Project Supervisor
+
+\clearpage
+
+% --------------- Abstract page -----------------------
+\begin{center}
+{\Large{\bf{ABSTRACT}}}
+\end{center}
+
+Given a set $A$ of $n$ red points and a set $B$ of $m$ blue points on a 2-dimensional plane, 
+covering points with unit squares is about finding a subset $D$ of $B$ of minimal cardinality such
+that if we draw unit squares with centres around points in $D$ all the red points from A will lie
+inside the unions of squares in $D$. The purpose of this project is to come up with an efficient approximation scheme to  
+cover points with unit squares. This is a variant of set cover problem. The decision version of set covering is NP-complete. Lund and  Yannakakis \cite{LY94} showed that set covering cannot be 
+approximated in polynomial time within a factor of $0.72 \ln n$.
+\clearpage
+\tableofcontents
+ \index{content}
+\chapter {Introduction}
+A set $A$ of red points and another set $B$ of blue points are given
+in 2-dimensional plane, unit squares are drawn taking blue point as center. Now descrete unit
+square cover problem is finding minimal subset $D \subseteq B$, such that all red points 
+lie with in the unit squares drawn taking blue points from D. 
+This is an instance covering problem. In combinatorics and computer science, covering problems are computational problems 
+that ask whether a certain combinatorial structure covers another, or how large the structure 
+has to be to do that. Covering problems are minimization problems. Packing problems are dual of 
+covering problems. Wireless sensor networks are formed by connected sensors that each have the ability
+to collect, process, and store environmental information as well as communicate with
+others via inter-sensor wireless communication. These characteristics allow wireless
+sensor networks to be used in a wide range of applications. Covering points with unit disk finds its application in 
+designing wireless sensor networks. Another problem where covering with squares or rectangle, has an 
+important application is related to image processing, discussed in Tanimoto and Fowler \cite{TF80}.
+None of the above problems was reported to have bounded error ratio approximation algorithm. We
+shall call an algorithm a $\delta$-approximation, $\delta >0$, for a certain problem if the error of the
+value of the optimal solution does not exceed $\delta$. Our main focus is to identify a $\delta$ approximation
+algorithm such that $\delta$ is as small as possible. In some case one specify a family of algorithm such that for each 
+$\epsilon >0$ there is an $\epsilon$-approximation algorithm in the family that solves a given problem instance 
+with in relative error $\epsilon$. Such a family is called an approximation scheme. The running time of approximation
+algorithm increases monotonically with $\frac{1}{\epsilon}$. If the functional dependency of the running time is on the
+size of the input and $\frac{1}{\epsilon}$ is polynomial, then the scheme is said to be fully polynomail, if 
+on the other hand, it is polynomial only in the input scheme, the scheme is called polynomal.
+All the problems descibed and consequently their extensions are NP-Complete. As such there is no fully
+polynomial scheme for these problems, unless NP=P \cite{GMJD78}.
+
+\chapter{Related work}
+                 \begin{itemize}
+                 \item \textbf{Minimum geometric disk cover} Here we are given set of points and we have to find 
+                              unit disk of minimum cardinality whose union covers the points. Here disk 
+                              centers are not restricted to the set but can be arbitary points from the plane.
+                              Again, this problem is NP-hard \cite{FMS81} and has a PTAS solution [\cite{T91}, \cite{DW85}].
+                 \item \textbf{Descrete K centres }Given two sets of point in the plane $P$ and $Q$ 
+                              and an integer $K$ and we have to find a set of $K$ disks centered on points in $P$ whose union covers
+                              $Q$ such that the radius of the largest disk is minimized. This is contraint optimization problem.
+                              We have to get a set $Q$ that consists of $K$ disks whose centers are from points in $P$ and constraint is that
+                              disks can have atmost radius one. This problem is NP-Hard.
+                 \item \textbf{Descrete unit disk cover Problem} Given a set $P$ of $n$ points and a set $D$ of $m$ unit disks and DUDC problem is finding 
+                              minimum cardinality subset $D^{\ast}$ covering all the points in $P$\cite{GRALB12}. The research was 
+                              done by Das et al., where they proposed constant factor approximation algorithm to the problem in 
+                              O(n$\log$ n + m $\log$ m $+$ mn). They brought down the approximation approximation factor to 18 which 
+                              was previously 22 by Claude et al., \cite{FGRSR10}.
+                 \end{itemize}
+\chapter {Preliminaries}
+\begin{description}
+
+\item \textbf{Restricted line separable descrete unit disk cover}(RLSDUDC):Suppose we are given a set $P$ of $n$ points and another set $D$ of
+                         $m$ points such that $\forall p_{i} \in P$ $\exists$ at least one point $d_{i}$ from $D$ which covers it i,e if we draw 
+                         unit disk center around $d_{i}$, then $p_{i}$ will be inside the disk and points in $P$ and center of disks in $D$ are 
+                         separated by line. If such kind of condition exist then there exist an optimal set $D^{\ast} \subseteq D$ such that 
+                         each point in $P$ is covered by drawing unit disks with centeres at points in $D^{\ast}$.
+                         RLSDUDC is a problem of finding that optimal $D^{\ast}$ \cite{FGRSR10}.
+                 
+\item \textbf{Line Separable Descrete Unit Disk Cover}(LSDUDC):Suppose we have set $P$ of $n$ point and a set $D$ of $m$ points in a plane.
+                         Line $\ell$ divides the plane into two halves $\ell^{+}$ and $\ell^{-}$. Set $P$ lies in $\ell^{+}$.  
+                         Set $D$ which contains center of $m$ unit disks lies in $\ell^{+} \cup \ell^{-}$. $\forall p_{i} \in P$ $\exists$ at 
+                         least one point $d_{i}$ from $D$ which covers it i,e if we draw unit disk center around $d_{i}$, then $p_{i}$ will be 
+                         inside the disk and points in $P$. LSDUDC is problem of finding minimum sized set $D^{*} \subseteq D$ that 
+                         cover all points in $P$ with the constriants describe above \cite{FGRSR10}.
+             \begin{theorem}
+              The RLSDUDC problem can be solved optimally where authors \cite{FGRSR10} solves the LSDUDC problem with a 2-factor approximation. The running
+              time for both solutions is $O(n log n + mn)$ where $m = |D|$ and $n = |P|$ .
+
+             \end{theorem}
+             \begin{theorem}
+              Descrete unit disk cover problem has an 18-approximation result in $O(m \log m+ n \log n + mn)$ time \cite{GRALB12}.
+
+             \end{theorem}
+
+
+\end{description}
+\chapter{Testing Feasiblity}Checking feasiblity is an important step while solving an optimization problem. In descrete unit square cover problem
+                            we have to find minimal subset set of blue points from a given set of blue points in 2 dimensional plane such that unit
+                            squares drawn around points in subset covers all the red points which are also given in 2 dimensional plane. So here 
+                            we are searching for minimal subset.In order to proceed for the solution first we have to be sure whether the solution 
+                            exists or not i.e, checking the feasiblity of problem. For testing feasiblity, we first sort m red point and n blue points in 2 
+                            dimensional plane with respect to x-coordinate to get A and B respectively. For each red point $r_{i} \in A$, where A 
+                            is sorted set of n red points with respect to x-coordinate, first collect blue points $b_{i} \in B$ where B is sorted
+                            set of blue points with respect to x-coordinate, whose x-coordinate lies in the $[x_{r_{i}}-0.5,x_{r_{i}}+0.5]$. Suppose 
+                            we get a set $B_{i}$ of blue points then for each blue point $b_{i} \in B_{i}$
+                            we calculate euclidean distance between $b_{i}$and $r_{i}$, if the distance calculated is found out to be less than one
+                            then $r_{i}$ can be covered by $b_{i}$. Similarly we do for each red points $r_{i} \in A$. If we are able to get 
+                            atleast a blue point for each red point in A satisfying euclidean distance less than one then the descrete unit 
+                            square cover problem has a solution, otherwise not. Time Complexity ($m\log m+ n\log n + mn$).
+ 
+
+\chapter{Descrete unit square cover problem}
+                            Descrete unit square cover problem is solvable using the descrete unit disc cover \cite{GRALB12} in 18 approximation.
+                            I have tried solving problem combining shifting strategy \cite{DW85} and using the result of line separable descrete 
+                            unit disc cover \cite{FGRSR10} but the approximation was 32.Here is my approach.
+                            Given a set $A$ of $n$ red points and a set $B$ of $m$ blue points in two dimensional plane.
+                            \begin{itemize}
+                             \item $m$ red points are sorted in X and Y direction separetely and stored in $R_{x}$ and $R_{y}$ array where $R_{x}$ and 
+                                   $R_{y}$ contains points in sorted X and Y coordinate respectively.
+                             \item $n$ blue points are sorted in X and Y direction separetely and stored in $B_{x}$ and $B_{y}$ array where $B_{x}$ and 
+                                   $B_{y}$ contains points in sorted X and Y coordinate respectively.
+                             \item a $m \ast n$ bit matrix $BM$ is created and each cell is initialized to 0. For each red point $r_{i}$ from  $A$ 
+                                         we consider all the points that lies in the unit square drawn taking $r_{i}$ as center. Out of those points 
+                                         if we find a blue point $b_{j}$ from set B then set $BM[j][i]=1$. Thus we prepare a bit matrix $BM$ by 
+                                         which we can see what all blue points $b{j} \in B$ that covers the red point $r_{i}$ by seeing the $ith$ column
+                                         of BM and all those blue points corresponding to row marked 1 in the $ith$ column are points that can cover
+                                         $r_{i}$.
+                              \item we also create a boolean array $Rb$ whose each entry cooresponds to a $r_{i} \in A$, each entry initialized to false.
+                            \end{itemize}
+                            Now I partioned the 2-dimensional plane into $1*1$ square grids. Suppose $k$ grids are formed.Now I tried finding cover
+                            of red points in each square grid with the blue points that are also in same grid.
+                            \begin{itemize}
+                             \item In each grid, we draw a line $\ell_{1}$ that divides it into two rectangles of dimension each $0.5 \ast 1$.
+                                    $\ell_{0}$ and $\ell_{2}$ define the upper and lower horizontal boundary of grid. Define upper rectangle
+                                   as rectangle formed by $[\ell_{0},\ell_{1}]$ as upper and lower boundary and similarly lower reactangle as rectangle formed by $[\ell_{1},\ell_{2}]$.
+                                
+                             \item we take each red points in upper rectangle that can be covered by squares drawn by taking blue points 
+                                   in lower rectangle as center of the square and make a set $P1$ from those red points. Again we taken each 
+                                   red point in lower rectangle that can be cover by square drawn taking blue point that are in upper 
+                                   rectangle as center and create a set $P2$ from those red points.
+			      \item Now we take $P1$ and apply LSDUDC with respect to line $\ell_{1}$ to cover points in P1. Suppose we get a set 
+                                   $S1$ as the result of LSDUDC. Now same we apply for $P2$. We apply LSDUDC 
+                                   with respect to line $\ell_{1}$ to cover points in $P2$, from it we get a set $S2$. Now in the 
+                                   process of applying LSDUDC we mark $Rb_{i}$ as true for each red point $r_{i}$ that are covered.
+                           
+                             \item we create a set $cover1 = S1 \cup S2$ that corresponds to all those blue points that cover red points that are in grid.
+                             \item Similarly we do the same for each grid and get $cover1,cover2,....,coverk$ and create a set $cover=cover1 \cup cover2
+                                  \cup cover3 ....\cup cover k$.
+                             \item Now we scan the the boolean array $Rb$ and check entries which are marked false, for those entries, scan 
+                                   the BM matrix and check all those blue points that can cover it.Suppose $Rb_{i}$ is marked false which
+                                   implies $r_{i}$ is not yet covered so we check the $ith$ column of $BM$ matrix and create a set $temp$
+                                   containing all blue points that covers it. If out of blue points in set $temp$, there exist a blue point that is 
+                                   already in cover then make that $Rb_{i}$ true, otherwise take an arbitary blue point from the $temp$ that covers 
+                                   $r_{i}$ and add to set $cover$ and make $Rb_{i}$ true.
+                             \item Finally we obtain a $cover$ containing blue points that can cover all red points given.
+                           \end{itemize}
+                            I am applying LSDUDC twice in each grid which creates 4 approximation \cite{FGRSR10}. Now for each red points in grid,it may be cover 
+                            by blue points that are in left,right grids and may be also by upper and lower grids, which overall adds 8 to the approximation
+                            factor. Since we are applying shifting strategy so overall approximation becomes $8\ast 4=32$ \cite{DW85} which is much higher approximation
+                            than DUDC approach so the whole amount of work is not benefecial. My future work will be going to reduce the approximation factor .
+                            
+\clearpage
+\bibliographystyle{plain}
+\begin{thebibliography}{10} 
+
+\bibitem{DW85}D. Hochbaum and W. Maass, \textit{Approximation schemes for covering and packing problems in image processing and VLSI}, 
+         J. ACM, 32, (1985) 130-136.
+\bibitem{FGRSR10}F. Claude, G. K. Das, R. Dorrigiv, S. Durocher, R. Fraser, A. Lopez-Ortiz, B. G. Nickerson and A. Salinger, 
+                 \textit{An improved line-separable algorithm or discrete unit disk cover}, Disc. Math, Alg. and Appl. , 2, (2010) 77-87.
+\bibitem{FMS81}Fowler, M. Paterson and S. Tanimoto, \textit{Optimal packing and covering in the plane are np-complete}, Inf. Proc. 
+               Let. , 12, (1981) 133-137.
+\bibitem{GMJD78}Garey, M. R. , and Johnson, S. \textit{Computers and Intractability: A Guide to the Theory of NP-Completeness. Freeman, San Francisco}, (1978).
+\bibitem{GRALB12} Gautam K. Das, Robert Fraser, Alejandro Lopez-Ortiz, and Bradford G. Nickerson 
+                \textit{On the descrete unit disk cover problem}. 5th International Workshop, WALCOM 2011, New Delhi, India, February 18-20, 2011. Proceedings
+                 (2011) 146-157 .
+\bibitem{LY94} Lund, Carsten, Yannakakis, Mihalis \textit{On the hardness of approximating minimization problems} J. ACM, 
+41, (1994) 960-981
+\bibitem{TF80} Tanimoto, S. L. , and Fowler, R. J. \textit{Covering image subsets with patches}. In Proceedings of the 5th International 
+               Conference on Pattern Recognition, (1980), 835-839.
+\bibitem{T91}T. Gonzalez, \textit{Covering a set of points in multidimensional space}, Inf. Proc. Let. , 40, (1991) 181-188.
+
+\end{thebibliography}
+ 
+\end{document}

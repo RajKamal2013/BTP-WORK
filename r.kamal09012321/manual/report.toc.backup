@@ -1,0 +1,18 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}Code }{4}
+\contentsline {section}{\numberline {2.1}DescriptionS}{4}
+\contentsline {section}{\numberline {2.2}Functionality}{4}
+\contentsline {section}{\numberline {2.3}Working}{4}
+\contentsline {section}{\numberline {2.4}Different files and functions}{4}
+\contentsline {subsection}{\numberline {2.4.1}user$\_fun.h$}{4}
+\contentsline {subsection}{\numberline {2.4.2}generator$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.3}algo$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.4}display$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.5}graphics$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.6}mouse$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.7}keyboard$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.8}menu$_$fun.cpp}{4}
+\contentsline {subsection}{\numberline {2.4.9}main.cpp}{4}
+\contentsline {section}{\numberline {2.5}outputs}{4}
+\contentsline {subsection}{\numberline {2.5.1}results.txt}{4}
+\contentsline {subsection}{\numberline {2.5.2}error.txt}{4}
